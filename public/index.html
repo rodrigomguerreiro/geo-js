@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js" integrity="sha512-ozq8xQKq6urvuU6jNgkfqAmT7jKN2XumbrX1JiB3TnF7tI48DPI4Gy1GXKD/V3EExgAs1V+pRO7vwtS1LHg0Gw==" crossorigin="anonymous"></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css' rel='stylesheet' />
+    
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <title>Geo</title>
+</head>
+<body>
+    <div class="wui-side-menu open pinned" data-wui-theme="dark">
+        <div class="wui-side-menu-header">
+            <img src="./assets/image.png" class="wui-side-menu-trigger">
+            <a href="#" class="wui-side-menu-pin-trigger">
+                <i class="fa fa-arrow-left"></i>
+                </a>
+            <!--
+                <a href="#" class="wui-side-menu-trigger"><i class="fa fa-bars"></i></a>
+                <a href="#" class="wui-side-menu-pin-trigger">
+                <i class="fa fa-arrow-left"></i>
+                </a>
+            -->
+        </div>    
+        <ul class="wui-side-menu-items">
+        <li class="wui-side-menu-item">
+            <span class="box-title">TALHÂO AFC-101 </br>184 Hectares             
+            <a type="button" class="btn btn-light btn-sm float-right"><i class="fas fa-trash-alt"></i></a>
+            <button type="button" class="btn btn-light btn-sm float-right"><i class="fas fa-edit"></i></button></span>
+        </li>
+        <li class="wui-side-menu-item">
+            <span class="box-title">TALHÂO OLGA-356 </br>92 Hectares             
+            <button type="button" class="btn btn-light btn-sm float-right"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-light btn-sm float-right"><i class="fas fa-edit"></i></button></span>
+        </li>
+        <li class="wui-side-menu-item">
+            <span class="box-title">TALHÂO AFC-101 </br>92 Hectares             
+            <button type="button" class="btn btn-light btn-sm float-right"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-light btn-sm float-right"><i class="fas fa-edit"></i></button></span>
+        </li>
+        <li class="wui-side-menu-item">
+            <span class="box-title">TALHÂO AFC-101 </br>92 Hectares             
+            <button type="button" class="btn btn-light btn-sm float-right"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-light btn-sm float-right"><i class="fas fa-edit"></i></button></span>
+        </li>
+        </ul>
+        <div class="wui-side-menu-bottom text-center">
+            <a id="new" href="#" data-toggle="modal" data-target="#cadTalhao"><i class="fa fa-plus-circle"></i></button>
+        </div>
+      </div>
+      
+
+      <div class="container-fluid">
+          <div class="row">
+              <div class="wui-content-header">
+                  <a href="#" class="wui-side-menu-trigger"><i class="fa fa-bars"></i></a>
+                  <span class="wui-title">TALHÂO OLGA-356</span>
+              </div>
+          </div>
+      </div>
+      
+      <div class="wui-content">
+        <div class="wui-content-header">
+            <a href="#" class="wui-side-menu-trigger"><i class="fa fa-bars"></i></a>
+            <span class="wui-title">TALHÂO OLGA-356</span>
+        </div>
+        <div class="wui-content-main">       
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-3 col-xs-2">
+                                <div class="form-group">
+                                    <label for="Nome">Nome:</label>
+                                    <input class="form-control" type="text" placeholder="TALHÂO OLGA-356" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1">
+                                <div class="form-group"> 
+                                    <label for="tamanho">Tamanho:</label>
+                                    <input class="form-control" type="text" placeholder="92" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                                <div class="form-group">
+                                <label for="Medida">Medida:</label>
+                                <select class="form-control" data-size="5" data-live-search="true" data-width="100%" name="Medida" readonly>
+                                        <option selected disabled>Selecione</option>
+                                        <option>Km</option>
+                                        <option>Hectare</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-xs-1">
+                                <div class="form-group"> 
+                                    <label for="latitude">Latitude:</label>
+                                    <input class="form-control" type="text" placeholder="1661882" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-xs-1">
+                                <div class="form-group"> 
+                                    <label for="longitude">Longitude:</label>
+                                    <input class="form-control" type="text" placeholder="4511125" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="map"></div>
+
+                        <!--
+                            <div id='delete'>Remover Dados</div>
+                            <a href='#' id='save'>Exportar Dados</a>
+                        -->
+                    </div>
+                    <div class="col-md-1"></div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 text-center" style="margin-top: 10px;">
+                        <button id='save' type="button" class="btn btn-success" style="background-color: #256014;">Salvar Alterações</button>
+                        <button id='delete' type="button" class="btn btn-danger">Remover Tudo</button>
+                    </div>
+                    <div class="col-md-1"></div> 
+                </div>           
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cadTalhao" tabindex="-1" role="dialog" aria-labelledby="talhaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="talhaoModalLabel">Registrar Talhão</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form role="form" method="POST" action="">
+                <input type="hidden" name="_token" value="">
+                <div class="form-group">
+                    <label class="control-label">Nome</label>
+                    <div>
+                        <input type="text" id="nometalhao" class="form-control input-lg" name="nometalhao" value="">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary" id="salvar_talhao">Salvar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="wui-overlay"></div>
+    
+    <script src="js/map.js"></script>
+</body>
+</html>
